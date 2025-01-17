@@ -1,0 +1,98 @@
+<div class="relative grid place-items-center bg-gradient-to-b from-orange-200 to-orange-900 h-[100vh] w-[100vw]">
+    <div class=" h-screen w-full fixed opacity-30">
+        <img class=" object-cover h-full w-full " src="assets/images/medical-banner-with-doctor-wearing-goggles.webp" alt="Auth Image">
+    
+    </div>
+    <img class="w-96 absolute top-10 mx-auto z-10 bg-white rounded-lg" src="assets\images\hospital-management-system-high-resolution-logo.png" alt="">
+    
+    @if (login()) {
+        <div class=" p-5 z-10  w-96 bg-white rounded-lg hover:shadow-xl transition-all ">
+            <div class="flex flex-col gap-10">
+                <h1 class="text-2xl py-3 font-bold grid place-items-center">Login to your account </h1>
+    
+                <form class=" grid grid-rows-2 gap-6 " [formGroup]="authForm" (ngSubmit)="submit()">
+                    <p-floatlabel>
+                        <input pInputText class="w-full" id="username" formControlName="username" name="username" type="text" autocomplete="on" />
+                        <label for="username">Username</label>
+                    </p-floatlabel>
+                    
+                    <p-floatlabel>
+                        <!-- <p-password id="password" class="" [(ngModel)]="value1" [toggleMask]="true" promptLabel="Choose a password" weakLabel="Too simple" mediumLabel="Average complexity" strongLabel="Complex password" /> -->
+                        <p-password inputId="password" name="password" formControlName="password" type="password" class="w-full" [feedback]="false"
+                            styleClass="p-password p-component p-inputwrapper p-input-icon-right" [style]="{'width':'100%'}"
+                            [inputStyle]="{'width':'100%'}" [toggleMask]="true" autocomplete="on"/>
+                            <!-- <input pInputText class="w-full" id="password" type="password" [(ngModel)]="value1" autocomplete="off" />  -->
+                        <label for="password">Password</label>
+                    </p-floatlabel>
+                </form>
+    
+                <p-button label="Login"  [disabled]="authForm.invalid"  (onClick)="submit()" class="py-5" [style]="{'width':'100%'}" [raised]="true" severity="warn" />
+                
+            </div>
+            
+            <div class="flex justify-center cursor-pointer py-3">
+                <span>No account?</span>&nbsp;<p class="underline text-blue-500" (click)="switch()">Create One</p>
+            </div>
+        </div>
+    } @else {
+        <div class=" p-5 z-10  w-96 bg-white rounded-lg hover:shadow-xl transition-all ">
+            <div class="flex flex-col gap-10">
+                <h1 class="text-2xl py-3 font-bold grid place-items-center">Create an account </h1>
+    
+                <form class=" grid grid-rows-2 gap-6 " [formGroup]="authForm" (ngSubmit)="submit()">
+                    <p-floatlabel>
+                        <input pInputText class="w-full" name="username" formControlName="username" id="username" type="text" autocomplete="on" />
+                        <label for="username">Username</label>
+                    </p-floatlabel>
+                    <p-floatlabel>
+                        <input pInputText class="w-full" name="email" formControlName="email" id="email" type="email" autocomplete="on" />
+                        <label for="email">Email</label>
+                    </p-floatlabel>
+                    <div>
+                        <p-floatlabel>
+                            <!-- <p-password id="password" class="" [(ngModel)]="value1" [toggleMask]="true" promptLabel="Choose a password" weakLabel="Too simple" mediumLabel="Average complexity" strongLabel="Complex password" /> -->
+                            <p-password inputId="password" name="password" formControlName="password" type="password" class="w-full " [feedback]="false"
+                                styleClass="p-password p-component p-inputwrapper p-input-icon-right" [style]="{'width':'100%'}"
+                                [inputStyle]="{'width':'100%'}" [toggleMask]="true" autocomplete="on"/>
+                                <!-- <input pInputText class="w-full" id="password" type="password" [(ngModel)]="value1" autocomplete="off" />  -->
+                            <label for="password">Password</label>
+                        </p-floatlabel>
+                          @if (authForm.get('password')?.errors?.['minlength']) {<span class="pl-5 text-red-600 text-xs italic">Password should contain at least 6 characters</span>}
+
+                          
+                    </div>
+                    <div >
+
+                        <p-floatlabel>
+                            <!-- <p-password id="password" class="" [(ngModel)]="value1" [toggleMask]="true" promptLabel="Choose a password" weakLabel="Too simple" mediumLabel="Average complexity" strongLabel="Complex password" /> -->
+                            <!-- [styleClass]="!passwordMatchValidator() ? 'ng-invalid ng-dirty' : ''"  -->
+                            <p-password 
+                                inputId="confirm-password" 
+                                name="confirm-password" 
+                                type="password" 
+                                class="w-full" 
+                                formControlName="confirmPassword"
+                                [feedback]="false"
+                                styleClass="p-password p-component p-inputwrapper p-input-icon-right" 
+                                [style]="{'width':'100%'}"
+                                [inputStyle]="{'width':'100%'}" 
+                                [toggleMask]="true"  
+                                autocomplete="on">
+                                </p-password>
+                                <label for="password">Confirm Password</label>
+                            </p-floatlabel>
+                            @if (!passwordMatchValidator()) {<span class="pl-5 text-red-600 text-xs italic">Passwords do not match</span>}
+                    </div>
+                </form>
+    
+                <p-button label="Create Account" [disabled]="authForm.invalid" (onClick)="submit()" class="py-5" [style]="{'width':'100%'}" [raised]="true" severity="warn" />
+                
+            </div>
+            
+            <div class="flex justify-center cursor-pointer py-3">
+                <span>Already have an account?</span>&nbsp;<p class="underline text-blue-500" (click)="switch()">Login</p>
+            </div>
+        </div>
+    }
+
+</div>

@@ -1,0 +1,43 @@
+
+<div class="py-5 text-center">
+    <h1 class="mb-10 text-2xl">Edit User</h1>
+
+    <form action="submit" [formGroup]="userForm" class=" flex justify-around items-center flex-col">
+        <p-floatlabel class="mb-10">
+            <input class="w-96 " pInputText id="username" formControlName="username" autocomplete="off" />
+            <label for="username">Username</label>
+        </p-floatlabel>
+        <p-floatlabel class="mb-10">
+            <input class="w-96 " pInputText id="email" formControlName="email" autocomplete="off" />
+            <label for="email">Email</label>
+        </p-floatlabel>
+        <!-- <p-floatlabel class="mb-10">
+            <input class="w-96 " pInputText id="role" formControlName="role" autocomplete="off" />
+            <label for="role">Role</label>
+        </p-floatlabel> -->
+        <!-- <mat-form-field class="w-96 mb-5">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role" >
+              @for (role of userRoles(); track role) {
+                <mat-option [value]="role.value">{{role.name}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field> -->
+        <p-floatlabel class="mb-10 text-left">
+          <p-select formControlName="role" [options]="userRoles()" appendTo="body" optionLabel="name" optionValue="value" placeholder="Select a role" class="w-96 mb-5" />
+          <label for="role">Role</label> 
+        </p-floatlabel>
+        
+
+        <div class="mb-10 flex justify-center items-center w-full"><mat-slide-toggle class="green pr-5" formControlName="isActive" ></mat-slide-toggle>
+            <p>User Status: {{userForm.get('isActive')?.value ? 'Active':'Inactive'}}</p></div>
+
+
+        <div class="flex justify-around items-start w-full">
+            <button mat-dialog-close mat-button >Close</button>
+            <button (click)="onSubmit()" mat-button class="green" >Submit Changes</button>
+        </div>
+    </form>
+
+
+</div>

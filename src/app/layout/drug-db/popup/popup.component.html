@@ -1,0 +1,26 @@
+
+<div class="py-5 text-center">
+    <h1 class="mb-10 text-2xl">Drug Details</h1>
+
+    <form action="submit" [formGroup]="drugForm" class=" flex justify-around items-center flex-col">
+        <p-floatlabel class="mb-10">
+            <input class="w-96 " pInputText id="name" formControlName="name" autocomplete="off" />
+            <label for="name">Name</label>
+        </p-floatlabel>
+        <p-floatlabel class="mb-10">
+            <input class="w-96 " pInputText id="brand_name" formControlName="brandName" autocomplete="off" />
+            <label for="brand_name">Brand Name</label>
+        </p-floatlabel>
+        <p-floatlabel class="mb-10">
+            <textarea class="w-96 " [rows]="data.dosageForms.length" pInputText id="dosage" formControlName="dosageForms" autocomplete="off"></textarea>
+            <label for="dosage">Dosage Forms</label>
+        </p-floatlabel> 
+
+        <div class="flex justify-around items-start w-full">
+            <button mat-dialog-close mat-button >Close</button>
+            <button (click)="onSubmit()" mat-button class="green" >Submit Changes</button>
+        </div>
+    </form>
+
+
+</div>

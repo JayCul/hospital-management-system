@@ -1,0 +1,91 @@
+<div class="m-5">
+    <div class="pb-5">
+      <h1 class=" text-center text-lg uppercase font-bold">Edit Patient Details</h1>
+      <hr class="h-px w-full bg-gray-900 border-1 dark:bg-gray-700">
+    </div>
+    <form class="" [formGroup]="patientForm">
+        <div class="grid grid-rows-5 gap-6 my-6">
+            
+            <!-- Row 1: Name and Age -->
+            <div class="grid grid-cols-4 gap-6">
+              <p-floatlabel class="col-span-4">
+                <input class="w-full" pInputText id="name" formControlName="name" autocomplete="off" />
+                <label for="name">Name</label>
+              </p-floatlabel>
+              
+            </div>
+            
+            <!-- Row 2: Address and Contact -->
+            <div class="grid grid-cols-4 gap-6">
+              <p-floatlabel class="col-span-4">
+                <input class="w-full" pInputText id="address" formControlName="address" autocomplete="off" />
+                <label for="address">Address</label>
+              </p-floatlabel>
+            </div>
+            
+            <!-- Row 3: Height, Weight, Blood Pressure, and Blood Oxygen -->
+            <div class="grid grid-cols-12 gap-6">
+                <p-floatlabel class="col-span-4">
+                    <input class="w-full" pInputText id="age" formControlName="age" autocomplete="off" />
+                    <label for="age">Age</label>
+                </p-floatlabel>
+                <p-floatlabel class="col-span-4">
+                  <input class="w-full" pInputText id="contact" formControlName="contact" autocomplete="off" />
+                  <label for="contact">Phone Number</label>
+                </p-floatlabel>
+                <p-floatlabel  class="col-span-4">
+                  <input class="w-full" pInputText id="height" formControlName="height" autocomplete="off" />
+                  <label for="height">Height (cm)</label>
+                </p-floatlabel>
+            </div>
+            <div class="grid grid-cols-12 gap-6">
+              <p-floatlabel  class="col-span-4">
+                <input class="w-full" pInputText id="weight" formControlName="weight" autocomplete="off" />
+                <label for="weight">Weight (kg)</label>
+              </p-floatlabel>
+              <p-floatlabel class="col-span-4">
+                <input class="w-full" pInputText id="bloodPressure" formControlName="bloodPressure" autocomplete="off" />
+                <label for="bloodPressure">Blood Pressure</label>
+              </p-floatlabel>
+              <p-floatlabel class="col-span-4">
+                <input class="w-full" pInputText id="bloodOxygen" formControlName="bloodOxygen" autocomplete="off" />
+                <label for="bloodOxygen">Blood Oxygen (SpO<sub>2</sub>)</label>
+              </p-floatlabel>
+            </div>
+            
+            <!-- Row 4: Gender and Health Status -->
+            <div class="grid grid-cols-12 gap-6">
+              <p-floatlabel class="col-span-4">
+                <p-select formControlName="gender" [options]="formOptions.gender" appendTo="body" optionLabel="name" optionValue="value" placeholder="Select Gender" class="w-full"></p-select>
+              </p-floatlabel>
+              <p-floatlabel class="col-span-4">
+                <p-select formControlName="healthStatus" [options]="formOptions.healthStatus" appendTo="body" optionLabel="name"  optionValue="value" placeholder="Select Health Status" class="w-full"></p-select>
+              </p-floatlabel>
+              <p-floatlabel class="col-span-4">
+                  <p-multiselect formControlName="alerts" [options]="formOptions.alerts" appendTo="body" optionLabel="name" placeholder="Select Alert" class="w-full"></p-multiselect>
+                </p-floatlabel>
+            </div>
+            
+      
+            
+        </div>
+        
+        <div class="grid grid-cols-4 gap-6">
+            <p-floatlabel class="col-span-2">
+                <textarea pInputText class="w-full" rows="5" formControlName="complaints"></textarea>
+                <label for="complaints">Complaints</label>
+            </p-floatlabel>
+            <p-floatlabel class="col-span-2">
+                <textarea pInputText class="w-full" rows="5" formControlName="additionalRemarks"></textarea>
+                <label for="additionalRemarks">Additional Remarks</label>
+            </p-floatlabel>
+        </div>
+        
+    </form>
+        
+    <div class="flex flex-row justify-end align-middle mt-5">
+      <p-button label="Cancel" class="mr-5" severity="danger" variant="text" [raised]="true" icon="pi pi-times" iconPos="right" routerLink="/patients"></p-button>
+      <p-button (onClick)="saveChanges()" label="Save Changes" severity="success" variant="text" [raised]="true" icon="pi pi-save" iconPos="right"></p-button>
+    </div>
+  </div> 
+  

@@ -1,0 +1,120 @@
+<div class="relative">
+    <mat-drawer-container class="example-container absolute top-0 left-0 h-screen" hasBackdrop=false>
+        <mat-drawer #drawer mode='push' class=" border-r-2 border-white shadow-2xl" opened="true" >
+            <div class="flex justify-center flex-col h-full">
+                <div class="">
+                    <img class="" src="assets\images\hospital-management-system-high-resolution-logo.png" alt="">
+                </div>
+                <div class="absolute top-1 right-1 ">
+                    @if (isDrawerOpen(drawer)) {<button  mat-mini-fab color="" (click)="drawer.toggle()" aria-label="Menu toggling icon">
+                        <mat-icon>close</mat-icon>
+                      </button>}
+    
+                </div>
+    
+                <ul class="flex-grow">
+                    @for (item of navItems; track $index) {
+                        <li class="hover:bg-gray-100 text-lg">
+                            <a [routerLink]="[item.route]"
+                            routerLinkActive="focus"
+                            [routerLinkActiveOptions]="{ exact: false }"
+                                class="h-16 px-6 flex items-center justify-start pl-20 w-full
+                                rounded-r-xl active:pl-28 transition-all">
+                                
+                                <i class="pi font-bold text-center icon-font" [class]="item.class" ></i>
+                                <span class="pl-5">{{item.name}}</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+                <div class="mt-auto h-16 flex items-center w-full ">
+                    <button (click)="logout()"
+                        class="h-16 mx-auto flex justify-center items-center
+                        w-full focus:text-red-500 hover:bg-red-200 focus:outline-none">
+                        <i class="pi pi-sign-out icon-font"></i>
+                        <span class="pl-5 text-lg">Logout</span>
+                    </button>
+                </div>
+                
+            </div>
+            
+            
+        </mat-drawer>
+        
+        <mat-drawer-content class="">
+            
+            
+            <!-- component -->
+            <div class="relative z-20 top-0 min-h-screen w-screen flex bg-gray-200">
+                <!-- container -->
+            
+                <aside *ngIf="!isDrawerOpen(drawer)"
+                    class="fixed top-0 flex flex-col h-screen items-center bg-white text-gray-700 shadow">
+                    <!-- Side Nav Bar-->
+                    <!-- @if (!isDrawerOpen(drawer)){ -->
+                        <div class="h-[4.3rem] pt-3">
+                            <button class="" mat-mini-fab color="warn" (click)="drawer.toggle()" aria-label="Menu toggling icon">
+                                
+                                <mat-icon>menu</mat-icon>
+                            </button>
+                        </div>
+                    <!-- } -->
+            
+                    <div class="h-24 flex items-center w-full">
+                        <!-- Logo Section -->
+                        <a class="h-16 w-16 mx-auto cursor-default">
+                            <img
+                                class="h-16 w-16 mx-auto"
+                                src="assets/images/hms_logo.png"
+                                alt="hms logo" />
+                        </a>
+                    </div>
+            
+                    <ul>
+                        @for (item of navItems; track $index) {
+                            <li class="hover:bg-gray-100">
+                                <a [routerLink]="[item.route]"
+                            routerLinkActive="focus-min"
+                            [routerLinkActiveOptions]="{ exact: false }"
+                                    class="h-16 px-6 flex justify-center items-center w-full
+                                     rounded-r-xl  active:pl-8 transition-all">
+                                    
+                                    <i class="pi font-bold icon-font" [class]="item.class"></i>
+                                </a>
+                            </li>
+
+                        }
+                        <!-- Items Section -->
+            
+                        
+            
+                    </ul>
+            
+                    <div class="mt-auto h-16 flex items-center w-full">
+                        <!-- Action Section -->
+                        <button (click)="logout()"
+                            class="h-16 mx-auto flex justify-center items-center
+                            w-full focus:text-orange-500 hover:bg-red-200 focus:outline-none">
+                            <i class="pi pi-sign-out icon-font"></i>
+            
+                        </button>
+                    </div>
+            
+                </aside>
+                <div class="flex flex-col transition-all " [ngClass]="isDrawerOpen(drawer) ? 'app-body' : 'app-body-collapsed ml-[4.5rem]'">
+    
+                    <mat-toolbar class="">
+                        
+                        <!-- <button mat-raised-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button> -->
+                        <!-- <p *ngIf="!isDrawerOpen(drawer)" class="mx-auto italic font-sans">Hospital Management System</p> -->
+                         <p class="text-lg  font-light flex justify-center items-center"><img class="h-12 pr-5" [src]="img()" alt="Greeting Image"> {{getGreeting() }} {{title}} <span class="Quicksand">&nbsp; {{username}}</span></p>
+                    </mat-toolbar>
+                      <router-outlet  />
+                </div>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+
+
+</div>
+<!-- <router-outlet></router-outlet> -->

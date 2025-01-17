@@ -1,0 +1,104 @@
+
+<div class="m-5 h-full">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                Our Drug Database
+                <div class="flex justify-between items-center">
+                    <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of Drugs available to be prescribed to patients, Edit and View their details.</p>
+                    <div class="relative w-80">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                            </svg>
+                        </div>
+                        <!-- <input id="drug" [(ngModel)]="searchText" (input)="onSearchChange(searchText)"  /> -->
+                        <input type="search" id="drug" [(ngModel)]="searchText" (input)="onSearchChange(searchText)" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Drug DB" required />
+                        <!-- <button type="submit" (click)="onSearchChange(searchText)" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> -->
+                        <div role="status" *ngIf="showSpinner()">
+                            <svg aria-hidden="true" class="absolute end-10 bottom-2.5 inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-red-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                            </svg>
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </caption>
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="p-4">
+                        S/n
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Brand Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Number of Dosage Forms
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Action
+                    </th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @for (drug of drugs(); track $index) {
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="w-4 p-4">
+                            {{$index + first()}}
+                        </td>
+                        <th scope="row" class="px-6 py-4 truncate max-w-[25vw] font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{drug.name}}
+                        </th>
+                        <td class="px-6 py-4 truncate max-w-[25vw]">
+                            {{drug.brandName}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{drug.dosageForms.length}}
+                        </td>
+                        
+                        <td class="px-6 py-1">
+                            <!-- <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View Details</a> -->
+                            <button (click)="openDialog(drug)" type="button" class="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-0 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">View Details</button>
+
+                        </td>
+                    </tr>
+                }
+               
+            </tbody>
+        </table>
+        <nav class="cursor-pointer flex justify-between items-center py-4 mx-auto" aria-label="Table navigation">
+            
+            <span class="text-sm px-5 font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-gray-900 dark:text-white">{{first()}}-{{last()}}</span> of <span class="font-semibold text-gray-900 dark:text-white">{{totalRecords()}}</span></span>
+            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+                <li>
+                    <a (click)="loadPage(page() - 1)" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                </li>
+                
+                @for (item of paginationData(); track $index) {
+                    <li *ngIf="item.value >= 1 && item.value <= totalPages()">
+                        <a (click)="loadPage(item.value)" [attr.aria-current]=checkCurrPage(item.current) class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-orange-300 transition-all hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white " [ngClass]="item.current ? 'bg-orange-400 text-white': ''">{{item.pointer}}</a>
+                    </li>
+                }
+                <li>
+                    <a (click)="loadPage(page() + 1)" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                </li> 
+            </ul>
+
+            
+            <form class="max-w-sm mx-auto">
+                <!-- <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label> -->
+                <select (change)="onPageChange($event)" id="limit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option *ngFor="let item of pageOptions" [value]="item.value">
+                        {{ item.value }}
+                      </option>
+                </select>
+            </form>
+  
+        </nav>
+    </div>
+</div>
