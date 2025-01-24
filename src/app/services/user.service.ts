@@ -21,6 +21,10 @@ export class UserService {
     return this.http.get(`${environment.userUrl}`, { params });
   }
   
+  getUserById(id: string){
+    return this.http.get(`${environment.userUrl}/by-id/${id}`);
+  }
+  
   getUserStats() {  
     return this.http.get(`${environment.userUrl}/stats`);
   }
@@ -48,7 +52,10 @@ export class UserService {
     
 
     return this.http.get(`${environment.userUrl}/search-by-name`, {params})
+  }
 
+  loadUserByRole(role: string){
+    return this.http.get(`${environment.userUrl}/by-role/${role}`)
   }
 
   updateUser(id: string, User: any){

@@ -56,6 +56,7 @@ export class EditUserPopupComponent {
     this.userForm =  new FormGroup({
       username: new FormControl({value: this.data.username, disabled: true}, [Validators.required]),
       email: new FormControl({value: this.data.email, disabled: true}, [Validators.required, Validators.minLength(6)]),
+      name: new FormControl({value: this.data.name, disabled: false}, [Validators.required]),
       role: new FormControl({value: this.data.role || 'user', disabled: false}, [Validators.required]),
       isActive: new FormControl({value: this.data.isActive, disabled: false}, [Validators.required]),
     },)
@@ -67,6 +68,7 @@ export class EditUserPopupComponent {
     const userArray = {
       username: this.userForm.get('username')?.value,
       role: this.userForm.get('role')?.value,
+      name: this.userForm.get('name')?.value,
       isActive: this.userForm.get('isActive')?.value
     }
     console.log('Array of dosage forms:', userArray);

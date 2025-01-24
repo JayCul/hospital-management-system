@@ -1,0 +1,32 @@
+<div class="">
+    <mat-tab-group #tabGroup>
+        <mat-tab label="Select Office to Report to"> 
+            <div class="p-10">
+                <p-floatlabel class="">
+                    <p-select [options]="offices()" [(ngModel)]="selectedOffice" (ngModelChange)="goToTab(1)" appendTo="body" optionLabel="name" optionValue="value" placeholder="Select an Office" class="w-96" />
+                    <!-- <label for="office">Office</label> -->
+                </p-floatlabel>
+
+            </div>    
+        </mat-tab>
+        <mat-tab label="Select Staff to Report to" [disabled]="isTab2Disabled()"> 
+            <form class="p-10 w-full " [formGroup]="assignStaff">
+                <p-floatlabel class="mb-5">
+                    <p-select formControlName="_id" [options]="staff()" appendTo="body" optionLabel="name" optionValue="_id" [placeholder]="placeholderText()" class="w-full" />
+                    <!-- <label for="office">Office</label> -->
+                </p-floatlabel>
+                <p-floatlabel class="">
+                    <textarea pInputText class="w-full" rows="3" formControlName="additionalRemarks"></textarea>
+                    <label for="additionalRemarks">Additional Remarks</label>
+                </p-floatlabel>
+            </form>   
+
+            <div class="flex justify-around items-start w-full mb-5">
+                <p-button (onClick)="close()" label="Close" class="mr-5" severity="danger" variant="text" [raised]="true" icon="pi pi-times" iconPos="right"></p-button>
+                <p-button (onClick)="onSubmit()" label="Save Changes" severity="success" variant="text" [raised]="true" icon="pi pi-save" iconPos="right"></p-button>
+             </div>
+        </mat-tab>
+        <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
+      </mat-tab-group>
+      
+</div>

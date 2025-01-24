@@ -9,13 +9,16 @@ export class DrugService {
 
   constructor(private http: HttpClient) { }
 
-  getDrugs(payload: any) {
+  getDrugs(payload?: any) {
   
-    const params = new HttpParams()
-      .set('page', payload.page)
-      .set('limit', payload.limit);
+    if (payload){
+      const params = new HttpParams()
+        .set('page', payload.page)
+        .set('limit', payload.limit);
+        return this.http.get(`${environment.drugUrl}`, {params})
+      }
       
-      return this.http.get(`${environment.drugUrl}`, {params})
+      return this.http.get(`${environment.drugUrl}`)
     }
     
   searchDrugByText(text: string, payload: any){

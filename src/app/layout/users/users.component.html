@@ -57,6 +57,9 @@
                         Username
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Role
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -85,6 +88,9 @@
                         </td>
                         <th scope="row" class="px-6 py-4 truncate max-w-[25vw] font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{user.username}}
+                        </th>
+                        <th scope="row" class="px-6 py-4 truncate max-w-[25vw] font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{user.name}}
                         </th>
                         <td class="px-6 py-4 truncate max-w-[25vw]">
                             {{getRoleName(user.role)}}

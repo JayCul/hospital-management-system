@@ -29,7 +29,7 @@ export class UsersComponent {constructor(private userService: UserService, priva
     private cdr: ChangeDetectorRef, private dialog: MatDialog 
   ) {
     this.searchSubject.pipe(
-      debounceTime(2000), // Wait 2s after the last event
+      debounceTime(1000), // Wait 2s after the last event
       distinctUntilChanged() // Only emit if the value changes
     ).subscribe(searchTerm => {
       this.search(searchTerm);
@@ -279,7 +279,7 @@ export class UsersComponent {constructor(private userService: UserService, priva
         }
     })
       
-    }, 3000)
+    }, 1000)
 }
   
   

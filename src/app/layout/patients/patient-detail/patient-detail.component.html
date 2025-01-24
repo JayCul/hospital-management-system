@@ -1,6 +1,13 @@
-<div class="m-5">
+<div class="m-3 relative min-h-full bg-white rounded-lg p-5">
+    <img class="fixed bottom-0 right-0 opacity-80 h-96" src="assets/images/editpatient.png" alt="editbg">
     <div class="pb-5">
-      <h1 class=" text-center text-lg uppercase font-bold">Edit Patient Details</h1>
+        <h1 class=" text-center text-lg uppercase font-bold">Edit Patient Details</h1>
+        <div class="flex justify-end">
+            <p-splitbutton label="Assign Staff to Patient" [model]="items" (onClick)="assignStaff()" raised text severity="warn" />
+            <!-- <p-button (onClick)="prescribe()" label="Prescribe Drug" class="mr-5 pb-5 text-right" severity="warn" variant="text" [raised]="true" icon="pi pi-check" iconPos="right"></p-button>
+            <p-button (onClick)="assignStaff()" label="Assign Staff to Patient" class="mr-5 pb-5 text-right" severity="contrast" variant="text" [raised]="true" icon="pi pi-check" iconPos="right"></p-button> -->
+
+        </div>
       <hr class="h-px w-full bg-gray-900 border-1 dark:bg-gray-700">
     </div>
     <form class="" [formGroup]="patientForm">
@@ -62,10 +69,29 @@
                 <p-select formControlName="healthStatus" [options]="formOptions.healthStatus" appendTo="body" optionLabel="name"  optionValue="value" placeholder="Select Health Status" class="w-full"></p-select>
               </p-floatlabel>
               <p-floatlabel class="col-span-4">
-                  <p-multiselect formControlName="alerts" [options]="formOptions.alerts" appendTo="body" optionLabel="name" placeholder="Select Alert" class="w-full"></p-multiselect>
+                  <p-multiselect formControlName="alerts" [options]="formOptions.alerts" optionValue="value" appendTo="body" optionLabel="name" placeholder="Select Alert" class="w-full"></p-multiselect>
                 </p-floatlabel>
             </div>
             
+            <div class="grid grid-cols-12 gap-6">
+              <p-floatlabel  class="col-span-3">
+                <input class="w-full" pInputText id="assignedDoctor" formControlName="assignedDoctor" autocomplete="off" />
+                <label for="assignedDoctor">Assigned Doctor</label>
+              </p-floatlabel>
+              <p-floatlabel  class="col-span-3">
+                <input class="w-full" pInputText id="assignedNurse" formControlName="assignedNurse" autocomplete="off" />
+                <label for="assignedNurse">Assigned Nurse</label>
+              </p-floatlabel>
+              <p-floatlabel  class="col-span-3">
+                <input class="w-full" pInputText id="assignedLabScientist" formControlName="assignedMLSSession" autocomplete="off" />
+                <label for="assignedLabScientist">Assigned Lab Scientist</label>
+              </p-floatlabel>
+              <p-floatlabel  class="col-span-3">
+                <input class="w-full" pInputText id="assignedPharmacist" formControlName="assignedPharmacist" autocomplete="off" />
+                <label for="assignedPharmacist">Assigned Pharmacist</label>
+              </p-floatlabel>
+              
+            </div>
       
             
         </div>
@@ -83,8 +109,8 @@
         
     </form>
         
-    <div class="flex flex-row justify-end align-middle mt-5">
-      <p-button label="Cancel" class="mr-5" severity="danger" variant="text" [raised]="true" icon="pi pi-times" iconPos="right" routerLink="/patients"></p-button>
+    <div class="flex flex-row justify-start align-middle mt-5">
+      <p-button (onClick)="routeToPatientList()" label="Go Back" class="mr-5" severity="danger" variant="text" [raised]="true" icon="pi pi-times" iconPos="right" routerLink="/patients"></p-button>
       <p-button (onClick)="saveChanges()" label="Save Changes" severity="success" variant="text" [raised]="true" icon="pi pi-save" iconPos="right"></p-button>
     </div>
   </div> 
