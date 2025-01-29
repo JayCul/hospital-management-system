@@ -128,7 +128,7 @@
                 
                 @for (item of paginationData(); track $index) {
                     <li *ngIf="item.value >= 1 && item.value <= totalPages()">
-                        <a (click)="loadPage(item.value)" [attr.aria-current]=checkCurrPage(item.current) class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-orange-300 transition-all hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white " [ngClass]="item.current ? 'bg-orange-400 text-white': ''">{{item.pointer}}</a>
+                        <a (click)="loadPage(item.value)" [attr.aria-current]=checkCurrPage(item.current) class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-orange-300 transition-all hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white " [ngClass]="item.current ? 'nav-active text-white': ''">{{item.pointer}}</a>
                     </li>
                 }
                 <li>

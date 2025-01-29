@@ -21,6 +21,7 @@ import { UserService } from '../services/user.service';
 })
 export class LayoutComponent {
   username!: string
+  role!: string
   title!: string
   img = signal("")
 
@@ -29,7 +30,10 @@ export class LayoutComponent {
   ){
     
     this.username = this.authService.user().username
+    this.role = this.authService.user().role
     this.title = this.userService.getRoleName(this.authService.user())
+
+
 
     effect(() => {
       const hour = new Date().getHours();
@@ -42,6 +46,60 @@ export class LayoutComponent {
         this.img.set('/assets/images/night.png');
       }
     });
+
+    switch (this.role) {
+      case 'admin':
+        this.navItems = [
+          {name: 'Dashboard', class: 'pi-inbox', route: '/dashboard'},
+          {name: 'Patients', class: 'pi-users', route: '/patients'},
+          {name: 'Prescriptions', class: 'pi-eraser', route: '/prescriptions'},
+          {name: 'Users', class: 'pi-user', route: '/users'},
+          {name: 'Drugs DB', class: 'pi-database', route: '/drug-database'},
+        ]
+        break;
+        case 'doctor':
+          this.navItems = [
+            {name: 'Dashboard', class: 'pi-inbox', route: '/dashboard'},
+            {name: 'Patients', class: 'pi-users', route: '/patients'},
+            {name: 'Prescriptions', class: 'pi-eraser', route: '/prescriptions'},
+            {name: 'Drugs DB', class: 'pi-database', route: '/drug-database'},
+        ]
+        break;
+        case 'nurse':
+          this.navItems = [
+            {name: 'Dashboard', class: 'pi-inbox', route: '/dashboard'},
+            {name: 'Patients', class: 'pi-users', route: '/patients'},
+            {name: 'Prescriptions', class: 'pi-eraser', route: '/prescriptions'},
+            {name: 'Drugs DB', class: 'pi-database', route: '/drug-database'},
+        ]
+        break;
+        case 'pharmacist':
+          this.navItems = [
+            {name: 'Dashboard', class: 'pi-inbox', route: '/dashboard'},
+            {name: 'Patients', class: 'pi-users', route: '/patients'},
+            {name: 'Prescriptions', class: 'pi-eraser', route: '/prescriptions'},
+            {name: 'Drugs DB', class: 'pi-database', route: '/drug-database'},
+        ]
+        break;
+        case 'medLabScientist':
+          this.navItems = [
+            {name: 'Dashboard', class: 'pi-inbox', route: '/dashboard'},
+            {name: 'Patients', class: 'pi-users', route: '/patients'},
+        ]
+        break;
+        case 'user':
+          this.navItems = []
+        break;
+        case 'guest':
+          this.navItems = []
+          break;
+        default:
+          this.navItems = []
+          break;
+          
+    } 
+
+
   }
   
 
@@ -51,11 +109,11 @@ export class LayoutComponent {
   }
 
   navItems: any = [
-    {name: 'Dashboard', class: 'pi-inbox', route: '/dashboard'},
-    {name: 'Patients', class: 'pi-users', route: '/patients'},
-    {name: 'Prescriptions', class: 'pi-eraser', route: '/prescriptions'},
-    {name: 'Users', class: 'pi-user', route: '/users'},
-    {name: 'Drugs DB', class: 'pi-database', route: '/drug-database'},
+    // {name: 'Dashboard', class: 'pi-inbox', route: '/dashboard'},
+    // {name: 'Patients', class: 'pi-users', route: '/patients'},
+    // {name: 'Prescriptions', class: 'pi-eraser', route: '/prescriptions'},
+    // {name: 'Users', class: 'pi-user', route: '/users'},
+    // {name: 'Drugs DB', class: 'pi-database', route: '/drug-database'},
   ]
 
   routeToPage(route: string){
@@ -100,6 +158,7 @@ export class LayoutComponent {
     if (user) {
       this.authService.user.set(JSON.parse(user));
       this.authService.isAuthenticated.set(true);
+      console.log(this.authService.user())
     }
     console.log(new Date().getHours())
   }

@@ -33,5 +33,10 @@ export class PrescriptionService {
     return this.http.get(`${environment.prescriptionUrl}/search`, {params})
   }
 
+  dispense(id: string, isDispensed: boolean){
+    let params = new HttpParams().set('isDispensed', isDispensed);
+    console.log(id, isDispensed)
+    return this.http.post(`${environment.prescriptionUrl}/dispense/${id}`, params)
+  }
 
 }

@@ -24,7 +24,7 @@ export class DashboardComponent {
   ageDistribution: any
   alertsByCategory: any
   lineGraphs: any
-  healthStatusBreakdown = signal([0, 0, 0])
+  healthStatusBreakdown = signal([0, 0, 0, 0])
   lineGraphsData = signal([0, 0, 0])
   alertsByCategoryData = signal([0, 0, 0])
   patientAssignments = signal([0, 0, 0, 0])
@@ -74,7 +74,8 @@ export class DashboardComponent {
         this.healthStatusBreakdown.set ([
           res.healthStatusBreakdown[0].count, 
           res.healthStatusBreakdown[1].count,
-           res.healthStatusBreakdown[2].count
+           res.healthStatusBreakdown[2].count,
+           res.healthStatusBreakdown[3].count
           ])
 
           this.healthStatusChart()
@@ -143,17 +144,19 @@ export class DashboardComponent {
       type: "doughnut",
       data: {
         labels: [
-          'Critical',
           'Stable',
+          'Critical',
           'Under observation',
+          'Unstable',
         ],
         datasets: [{
           label: 'Patients',
           data: this.healthStatusBreakdown(),
           backgroundColor: [
-            'rgb(255, 0, 0)',
             'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+            'rgb(255, 0, 0)',
+            'rgb(255, 205, 86)',
+            'rgb(8,8,8)'
           ],
           hoverOffset: 4
         }]

@@ -15,6 +15,7 @@ import {
 
 import { FormatDatePipe } from '../../pipes/format-date.pipe';
 import { PrescriptionService } from '../../services/prescription.service';
+import { EditPrescriptionComponent } from './edit-prescription/edit-prescription.component';
 
 @Component({
   selector: 'app-prescriptions',
@@ -76,20 +77,20 @@ export class PrescriptionsComponent {constructor(private prescriptionService: Pr
   }
   
   openDialog(user:any): void {
-    // const dialogRef = this.dialog.open(EditUserPopupComponent, {
-    //   data: user,
-    //   width: '500px',
+    const dialogRef = this.dialog.open(EditPrescriptionComponent, {
+      data: user,
+      minWidth: '700px',
       
 
-    // });
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   console.log(result);
-    //   if (result === "success") {
-    //     location.reload()
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      if (result === "success") {
+        location.reload()
+      }
+    });
   }
 
   paginationData = computed(() => {

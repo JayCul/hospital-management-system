@@ -1,9 +1,9 @@
 export const RoleRoutes:any = {
-    admin: ['/dashboard', '/admin', '/settings', '/users'],
-    doctor: ['/dashboard', '/patients', '/patients/:id', '/drug-database', '/prescriptions', '/users'],
-    nurse: ['/dashboard', '/patients', '/drug', '/prescriptions'],
-    pharmacist: ['/dashboard', '/patients', '/drug', '/prescriptions'],
-    medLabScientist: ['/dashboard', '/patients'],
-    user: [''],
+    admin: ['/dashboard', '/patients', '/patients/:id', '/drug-database', '/prescriptions', '/users'],
+    doctor: ['/dashboard', '/patients', '/patients/:id', '/drug-database', '/prescriptions'],
+    nurse: ['/dashboard', '/patients', '/patients/:id', '/drug-database', '/prescriptions'],
+    pharmacist: ['/dashboard', '/patients', '/patients/:id', '/drug-database', '/prescriptions'],
+    medLabScientist: ['/dashboard', '/patients', '/patients/:id'],
+    user: ['/login', '/register'],
     guest: ['/login', '/register'],
   };

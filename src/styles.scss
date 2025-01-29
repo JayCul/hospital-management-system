@@ -33,6 +33,10 @@ html {
   color: mat.$spring-green-palette))
 }
 
+.nav-active{
+  background-color: #ffac12 !important; 
+}
+
 body.dark-mode {
     color-scheme: dark;
 }
