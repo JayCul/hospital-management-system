@@ -1,4 +1,6 @@
-const apiBaseUrl= 'http://localhost:3000'; // Base URL for your backend
+// const apiBaseUrl= 'http://localhost:3000'; // Base URL for your backend
+const apiBaseUrl= 'https://medical-backend.zeabur.app'; // Base URL for your backend
+
 export const environment = {
     production: false,
 
