@@ -3,7 +3,7 @@
     <div class="pb-5">
         <h1 class=" text-center text-lg uppercase font-bold">Edit Patient Details</h1>
         <div class="flex justify-end">
-            <p-splitbutton label="Assign Staff to Patient" [model]="items" (onClick)="assignStaff()" raised text severity="warn" />
+            <p-splitbutton label="Assign Staff to Patient" appendTo="div" [model]="items" (onClick)="assignStaff()" raised text severity="warn" />
             <!-- <p-button (onClick)="prescribe()" label="Prescribe Drug" class="mr-5 pb-5 text-right" severity="warn" variant="text" [raised]="true" icon="pi pi-check" iconPos="right"></p-button>
             <p-button (onClick)="assignStaff()" label="Assign Staff to Patient" class="mr-5 pb-5 text-right" severity="contrast" variant="text" [raised]="true" icon="pi pi-check" iconPos="right"></p-button> -->
 
@@ -11,7 +11,7 @@
       <hr class="h-px w-full bg-gray-900 border-1 dark:bg-gray-700">
     </div>
     <form class="" [formGroup]="patientForm">
-        <div class="grid grid-rows-5 gap-6 my-6">
+        <div class="grid md:grid-rows-5 grid-flow-row gap-6 my-6">
             
             <!-- Row 1: Name and Age -->
             <div class="grid grid-cols-4 gap-6">
@@ -31,7 +31,7 @@
             </div>
             
             <!-- Row 3: Height, Weight, Blood Pressure, and Blood Oxygen -->
-            <div class="grid grid-cols-12 gap-6">
+            <div class="grid md:grid-cols-12 grid-rows-3 gap-6">
                 <p-floatlabel class="col-span-4">
                     <input class="w-full" pInputText id="age" formControlName="age" autocomplete="off" />
                     <label for="age">Age</label>
@@ -45,7 +45,7 @@
                   <label for="height">Height (cm)</label>
                 </p-floatlabel>
             </div>
-            <div class="grid grid-cols-12 gap-6">
+            <div class="grid md:grid-cols-12 grid-rows-3 gap-6">
               <p-floatlabel  class="col-span-4">
                 <input class="w-full" pInputText id="weight" formControlName="weight" autocomplete="off" />
                 <label for="weight">Weight (kg)</label>
@@ -61,7 +61,7 @@
             </div>
             
             <!-- Row 4: Gender and Health Status -->
-            <div class="grid grid-cols-12 gap-6">
+            <div class="grid md:grid-cols-12 grid-rows-3 gap-6">
               <p-floatlabel class="col-span-4">
                 <p-select formControlName="gender" [options]="formOptions.gender" appendTo="body" optionLabel="name" optionValue="value" placeholder="Select Gender" class="w-full"></p-select>
               </p-floatlabel>
@@ -73,7 +73,7 @@
                 </p-floatlabel>
             </div>
             
-            <div class="grid grid-cols-12 gap-6">
+            <div class="grid md:grid-cols-12 grid-rows-3 gap-6">
               <p-floatlabel  class="col-span-3">
                 <input class="w-full" pInputText id="assignedDoctor" formControlName="assignedDoctor" autocomplete="off" />
                 <label for="assignedDoctor">Assigned Doctor</label>
@@ -96,7 +96,7 @@
             
         </div>
         
-        <div class="grid grid-cols-4 gap-6">
+        <div class="grid md:grid-cols-4 grid-rows-2 gap-6">
             <p-floatlabel class="col-span-2">
                 <textarea pInputText class="w-full" rows="5" formControlName="complaints"></textarea>
                 <label for="complaints">Complaints</label>

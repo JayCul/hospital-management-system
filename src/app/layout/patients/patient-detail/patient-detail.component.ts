@@ -111,7 +111,7 @@ export class PatientDetailComponent implements OnInit {
  assignStaff(): void {
      const dialogRef = this.dialog.open(AssignStaffComponent, {
        data: this.patient(),
-       width: '500px',
+       minWidth: '500px',
        
  
      });

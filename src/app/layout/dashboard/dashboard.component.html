@@ -1,6 +1,6 @@
 
 <div class="m-5 h-full">
-    <div class="flex p-5 mb-5 justify-between items-center bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div class="flex md:flex-row flex-col p-5 mb-5 justify-between items-center bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
         <div class="flex flex-col justify-around text-lg">
             Welcome to your Dashboard!
             <p class="mt-1 text-md font-normal text-gray-500 dark:text-gray-400">Overview of all your statistics. Feel free to add a new Patient</p>
@@ -11,7 +11,7 @@
 
         </div>
     </div>
-    <div class="mb-5 grid grid-cols-4 gap-6">
+    <div class="mb-5 grid md:grid-cols-4 grid-rows-4 gap-6">
         <div *ngFor="let item of dashboardCards()" class=" flex flex-col w-full justify-around items-center text-2xl bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div class="p-6 flex flex-row items-center justify-start w-full">
                 <div class="flex flex-row items-center justify-start w-full">
@@ -25,31 +25,31 @@
                 <p class="font-bold text-gray-700 dark:text-gray-400">{{item.stat}}</p>
             </div>
             <hr class="h-px w-full bg-gray-900 border-1 dark:bg-gray-700">
-            <button class="w-full py-3">
+            <button class="w-full py-3 md:block hidden">
                 <h1 class="font-normal text-lg">Load Details &#8594;</h1> 
             </button>
 
         </div>
     </div>
 
-    <div class="grid grid-cols-3 gap-6 mb-5">
-        <div class="col-span-1 flex justify-center items-center  py-3 bg-white border border-gray-200 rounded-lg shadow hover:shadow-xl transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div class="grid md:grid-cols-3 grid-rows-2 gap-6 mb-5">
+        <div class="md:col-span-1 row-span-1 flex justify-center items-center  py-3 bg-white border border-gray-200 rounded-lg shadow hover:shadow-xl transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <canvas  id="healthStatus" ></canvas>
       </div>
-        <div class="col-span-2 flex justify-center items-center py-3 w-full bg-white border border-gray-200 rounded-lg shadow hover:shadow-xl transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="md:col-span-2 row-span-1 flex justify-center items-center py-3 w-full bg-white border border-gray-200 rounded-lg shadow hover:shadow-xl transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <canvas  id="patientAssignment" ></canvas>
 
         </div>
     </div>
-    <div class="grid grid-cols-3 gap-6">
-        <div class="col-span-1 flex justify-center items-center  py-3 bg-white border border-gray-200 rounded-lg shadow hover:shadow-xl transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div class="grid md:grid-cols-3 grid-rows-3 gap-6">
+        <div class="md:col-span-1 row-span-1 flex justify-center items-center  py-3 bg-white border border-gray-200 rounded-lg shadow hover:shadow-xl transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <canvas  id="ageDistribution" ></canvas>
       </div>
-        <div class="col-span-1 flex justify-center items-center py-3 w-full bg-white border border-gray-200 rounded-lg shadow hover:shadow-xl transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="md:col-span-1 row-span-1 flex justify-center items-center py-3 w-full bg-white border border-gray-200 rounded-lg shadow hover:shadow-xl transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <canvas  id="alertsByCategory" ></canvas>
 
         </div>
-        <div class="col-span-1 flex justify-center items-center py-3 w-full bg-white border border-gray-200 rounded-lg shadow hover:shadow-xl transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="md:col-span-1 row-span-1 flex justify-center items-center py-3 w-full bg-white border border-gray-200 rounded-lg shadow hover:shadow-xl transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <canvas  id="lineGraphs" ></canvas>
 
         </div>
