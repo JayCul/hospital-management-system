@@ -38,11 +38,11 @@ export class AuthComponent {
     private toast: HotToastService
   ) {
     this.formInit();
-    alert(`You can login with any username: Stanley and password: hakunamatata \n
+    alert(`You can login with username: Stanley and password: hakunamatata \n
       or
 
       Create a new account with any username and password \n
-      and mail me at jaystechub@gmail.com to profile your account as either a doctor, nurse, pharmacist, medLabScientist or admin \n
+      and mail me at jaystechub@gmail.com to profile your account as either a doctor, nurse, pharmacist or medLabScientist \n
       `);
   }
 
