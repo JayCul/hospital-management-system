@@ -114,7 +114,7 @@ Patient records can be **viewed and edited** by authorized personnel.
 
 ---
 
-### 🔐 Login Page
+### 🔐 Drugs Database
 ![Login Page](https://i.ibb.co/sJ3kPj7m/Screenshot-2025-07-25-110222.png)
 
 
