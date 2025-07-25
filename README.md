@@ -94,22 +94,22 @@ Patient records can be **viewed and edited** by authorized personnel.
 
 ---
 
-### 🧑‍⚕️ Patients Module (view and manage patient data)
+### 🧑‍⚕️ Create Patient (create patient data)
 ![Patients](https://i.ibb.co/jv0WXCh7/Screenshot-2025-07-25-110039.png)
 
 ---
 
-### 💊 Prescriptions Overview
+### 💊 Patients Module (view and manage patient data)
 ![Prescriptions](https://i.ibb.co/8g7mpmJx/Screenshot-2025-07-25-110055.png)
 
 ---
 
-### 🧪 Drugs Database (medication records)
+### 🧪 Prescription Database (medication records)
 ![Drugs Database](https://i.ibb.co/TM0GGxhK/Screenshot-2025-07-25-110142.png)
 
 ---
 
-### 👥 User Management (Admin panel to assign roles)
+### 👥 Prescription Database (edit medication records)
 ![Users Panel](https://i.ibb.co/5XNY46hQ/Screenshot-2025-07-25-110157.png)
 
 ---
