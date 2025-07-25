@@ -134,9 +134,10 @@ npm install
 
 # Start the development server
 npm run dev
+```
 
-🤝 Contributing
+### 🤝 Contributing
 Contributions are welcome! If you'd like to propose a feature or fix a bug, please fork the repository and submit a pull request.
 
-📄 License
+### 📄 License
 This project is licensed under the MIT License.
